@@ -1,10 +1,15 @@
 baseURL = 'https://fotkaholic.eu/'
 languageCode = 'en-us'
-title = 'Fotkaholic Portfolio'
+title = 'Fotkaholic'
+copyright = "© 2026 Anna Gordenko and Petr Trifanov. All photographs are All Rights Reserved."
 
 [params]
 cdn_url = 'https://img.fotkaholic.eu/'
 use_cdn = true
+[params.socialIcons]
+telegram = "https://t.me/fotkaholic"
+instagram = "https://www.instagram.com/aru_kotsuno"
+
 
 [module]
 [[module.imports]]

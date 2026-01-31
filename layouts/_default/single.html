@@ -1,0 +1,17 @@
+{{ define "main" }}
+<div class="home-container">
+  <div class="home-main">
+    {{ partial "title.html" . }}
+    {{ partial "gallery.html" . }}
+    {{ partial "related.html" . }}
+    {{ with .Content }}
+    <section class="prose">
+      {{ . }}
+    </section>
+    {{ end }}
+  </div>
+  <aside class="home-sidebar">
+    {{ partial "sidebar.html" }}
+  </aside>
+</div>
+{{ end }}

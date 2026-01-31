@@ -1,0 +1,15 @@
+{{ define "main" }}
+<div class="home-container">
+  <div class="home-main">
+    {{ partial "title.html" . }}
+    <section class="galleries">
+      {{ range where .Pages "Params.private" "ne" true }}
+      {{ partial "album-card.html" . }}
+      {{ end }}
+    </section>
+  </div>
+  <aside class="home-sidebar">
+    {{ partial "sidebar.html" }}
+  </aside>
+</div>
+{{ end }}

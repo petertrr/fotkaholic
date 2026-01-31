@@ -18,6 +18,22 @@
         "type": "github"
       }
     },
+    "hugo-theme-gallery": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1759565513,
+        "narHash": "sha256-inRk9c/a5MD50IqJSehD3meVt5mJKSQO8aYiIxSqDqI=",
+        "owner": "nicokaiser",
+        "repo": "hugo-theme-gallery",
+        "rev": "56fef19eac1559af9dc17c06f3582d792b33db23",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nicokaiser",
+        "repo": "hugo-theme-gallery",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1769461804,
@@ -36,6 +52,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
+        "hugo-theme-gallery": "hugo-theme-gallery",
         "nixpkgs": "nixpkgs"
       }
     },

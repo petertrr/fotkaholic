@@ -4,18 +4,23 @@
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    hugo-theme-gallery = {
+      url = "github:nicokaiser/hugo-theme-gallery";
+      flake = false;
+    };
   };
 
   outputs =
     { self
     , nixpkgs
     , flake-utils
-    ,
+    , hugo-theme-gallery
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
       let
-        pkgs = import nixpkgs { inherit system; };
+        pkgs = import nixpkgs { inherit system; config.allowUnfree = true; };
       in
       {
         packages = {
@@ -25,11 +30,15 @@
 
             nativeBuildInputs = with pkgs; [
               git
+              go
               hugo
+              just
             ];
 
             buildPhase = ''
-              ${pkgs.hugo}/bin/hugo
+              mkdir -p themes/github.com/nicokaiser/hugo-theme-gallery
+              ln -s ${hugo-theme-gallery} themes/github.com/nicokaiser/hugo-theme-gallery/v4
+              ${pkgs.just}/bin/just build
             '';
 
             installPhase = "cp -r public $out";
@@ -41,11 +50,18 @@
             go
             hugo
             vscode
-            
             just
+            jdk17 # for SQ:IDE
+
             nodePackages.nodejs
             nodePackages.npm
           ];
+          
+          shellHook = ''
+            echo "Setting up development environment..."
+            mkdir -p themes/github.com/nicokaiser/hugo-theme-gallery
+            ln -s ${hugo-theme-gallery} themes/github.com/nicokaiser/hugo-theme-gallery/v4
+          '';
         };
       }
     );

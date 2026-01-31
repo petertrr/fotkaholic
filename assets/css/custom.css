@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
+
+body {
+  align-items: center; /* to align items in the top menu */
+}
+
+body>header {
+  margin-bottom: 0cm;
+}
+
+hgroup {
+  margin: 0 auto 0;
+}
+
+#menu.horizontal-menu {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0;
+  align-items: center;
+}
+
+#menu.horizontal-menu li {
+  margin: 0;
+  padding: 0;
+}
+
+#menu.horizontal-menu li a {
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+}
+
+#menu.horizontal-menu li a:hover {
+  text-decoration: underline;
+}
+
+.home-container {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+}
+
+.home-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.home-sidebar {
+  flex: 0 0 280px;
+  position: sticky;
+  top: 2rem;
+}
+
+.photographer-info {
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.photographer-info h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.25rem;
+}
+
+.photographer-info p {
+  margin: 0.5rem 0;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.photographer-images {
+  position: relative;
+  height: 120px;
+  margin-bottom: 1.5rem;
+}
+
+.photographer-images img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  border: 3px solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.photographer-images img:first-child {
+  left: 0;
+  z-index: 2;
+}
+
+.photographer-images img:last-child {
+  left: 85px;
+  z-index: 3;
+}
+
+/* Responsive: stack sidebar below on smaller screens */
+@media (max-width: 768px) {
+  .home-container {
+    flex-direction: column;
+  }
+
+  .home-sidebar {
+    flex: 1;
+    position: static;
+    width: 100%;
+  }
+}
+
+.licorice-regular {
+  font-family: "Licorice", cursive;
+  font-weight: 500;
+  font-style: normal;
+}
