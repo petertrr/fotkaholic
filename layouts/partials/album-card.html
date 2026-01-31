@@ -1,0 +1,19 @@
+{{ $gallery := partial "get-gallery.html" . }}
+{{ with $gallery }}
+  {{- $thumbnailURL := partial "resolve-image-url" (dict "url" .thumbnail.src "site" site) }}
+  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
+    <figure style="background-color: {{ .color }}">
+      <img class="lazyload" width="{{ .thumbnail.width | default 1920 }}" height="{{ .thumbnail.height | default 1080 }}" data-src="{{ $thumbnailURL }}" alt="{{ .page.Title }}" />
+    </figure>
+    <div>
+      <h2>{{ .page.Title }}</h2>
+      <p>
+        {{ if gt .albumCount 0 }}
+          {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
+        {{ else }}
+          {{ T "photoCount" (.imageCount | lang.FormatNumber 0) }}
+        {{ end }}
+      </p>
+    </div>
+  </a>
+{{ end }}

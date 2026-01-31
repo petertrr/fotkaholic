@@ -1,0 +1,32 @@
+{{- /*
+  Resolves image URLs to either CDN or local URLs based on configuration.
+
+  Usage: {{ partial "resolve-image-url" (dict "url" .Permalink "site" .Site) }}
+
+  If use_cdn is true and URL is relative, prepends CDN URL.
+  Otherwise returns URL as-is.
+*/ -}}
+
+{{- $url := .url -}}
+{{- $site := .site -}}
+{{- $useCDN := $site.Params.use_cdn -}}
+{{- $cdnURL := $site.Params.cdn_url -}}
+
+{{- /* Handle empty URL */ -}}
+{{- if not $url -}}
+  {{- "" -}}
+
+{{- /* If already a full URL (absolute or protocol-relative), return as-is */ -}}
+{{- else if or (strings.HasPrefix $url "http://") (strings.HasPrefix $url "https://") (strings.HasPrefix $url "//") -}}
+  {{- $url -}}
+
+{{- /* If using CDN and URL is relative, prepend CDN URL */ -}}
+{{- else if $useCDN -}}
+  {{- /* Remove leading slash if present to avoid double slash */ -}}
+  {{- $cleanURL := strings.TrimPrefix "/" $url -}}
+  {{- printf "%s%s" $cdnURL $cleanURL -}}
+
+{{- /* Otherwise return URL as-is (resolved relative to baseURL) */ -}}
+{{- else -}}
+  {{- $url -}}
+{{- end -}}

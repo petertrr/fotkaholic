@@ -1,0 +1,46 @@
+<section class="gallery">
+  <div id="gallery" style="visibility: hidden; height: 1px; overflow: hidden">
+    {{ $images := slice }}
+    {{/* Loop over images from front matter instead of resources */}}
+    {{ range $img := .Params.images | default slice }}
+      {{/* Skip hidden images */}}
+      {{ if ne $img.params.hidden true }}
+        {{ $title := $img.title | default "" }}
+        {{ $date := "" }}
+        {{ if $img.date }}
+          {{ $date = time $img.date }}
+        {{ end }}
+
+        {{/* Extract filename from src for Name field */}}
+        {{ $name := path.Base $img.src }}
+
+        {{ $images = $images | append (dict
+          "Name" $name
+          "Title" $title
+          "Date" $date
+          "src" $img.src
+          "width" ($img.width | default 1920)
+          "height" ($img.height | default 1080)
+          "color" ($img.color | default "transparent")
+          "Params" ($img.params | default dict)
+          )
+        }}
+      {{ end }}
+    {{ end }}
+
+    {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
+      {{- $imageURL := partial "resolve-image-url" (dict "url" .src "site" site) }}
+      <a class="gallery-item" href="{{ $imageURL }}" data-pswp-src="{{ $imageURL }}" data-pswp-width="{{ .width }}" data-pswp-height="{{ .height }}" data-pswp-target="{{ .Name | urlize }}" title="{{ .Title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ .width }} / {{ .height }}">
+        <figure style="background-color: {{ .color }}; aspect-ratio: {{ .width }} / {{ .height }}">
+          <img class="lazyload" width="{{ .width }}" height="{{ .height }}" data-src="{{ $imageURL }}" alt="{{ .Title }}" />
+        </figure>
+        <meta itemprop="contentUrl" content="{{ $imageURL }}" />
+        {{ with site.Params.Author }}
+          <span itemprop="creator" itemtype="https://schema.org/Person" itemscope>
+            <meta itemprop="name" content="{{ site.Params.Author.name }}" />
+          </span>
+        {{ end }}
+      </a>
+    {{ end }}
+  </div>
+</section>
