@@ -1,0 +1,7 @@
+baseURL = 'https://fotkaholic.eu/'
+languageCode = 'en-us'
+title = 'Fotkaholic Portfolio'
+
+[module]
+[[module.imports]]
+path = "github.com/nicokaiser/hugo-theme-gallery/v4"
