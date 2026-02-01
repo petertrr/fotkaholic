@@ -1,13 +1,19 @@
 {{ define "main" }}
 <div class="home-container">
   <div class="home-main">
-    {{ partial "title.html" . }}
-    {{ partial "gallery.html" . }}
-    {{ partial "related.html" . }}
+    <h2><span>{{ .Title }}</span></h2>
     {{ with .Content }}
     <section class="prose">
       {{ . }}
     </section>
+    {{ end }}
+    {{ partial "gallery.html" . }}
+    {{ partial "related.html" . }}
+    {{ with .Params.date_published }}
+    <div class="card-footer">
+      <span></span>
+      <p class="card-published-date">Published on {{ . | time.Format "January 2, 2006" }}</p>
+    </div>
     {{ end }}
   </div>
   <aside class="home-sidebar">

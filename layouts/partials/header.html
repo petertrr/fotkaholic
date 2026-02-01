@@ -1,13 +1,5 @@
 <header>
-  {{ with .Parent }}
-    <a class="btn btn-square" href="{{ .RelPermalink | default .Site.Home.RelPermalink }}" title="{{ .Title }}">
-      <svg width="24" height="24" data-slot="icon" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-        <!-- TODO: convert to 'home' icon -->
-        <path clip-rule="evenodd" fill-rule="evenodd" d="M11.03 3.97a.75.75 0 0 1 0 1.06l-6.22 6.22H21a.75.75 0 0 1 0 1.5H4.81l6.22 6.22a.75.75 0 1 1-1.06 1.06l-7.5-7.5a.75.75 0 0 1 0-1.06l7.5-7.5a.75.75 0 0 1 1.06 0Z"></path>
-      </svg>
-    </a>
-  {{ end }}
-  {{ if .Title }}
+  {{ with .Site }}
     <hgroup>
       <h1 class="licorice-regular">{{ .Title }}</h1>
       {{ with .Params.Description }}
@@ -17,8 +9,24 @@
   {{ end }}
 </header>
 
-{{ with site.Menus.main }}
-  <menu class="horizontal-menu" id="menu">
+<menu class="horizontal-menu" id="menu">
+  {{ $currentEventsLink := "" }}
+  {{ if .Parent }}
+  {{ $currentEventsLink = .Parent.RelPermalink }}
+  {{ end }}
+  {{ if not $currentEventsLink }}
+    {{ with site.GetPage "/" }}
+      {{ $currentEventsLink = .RelPermalink }}
+    {{ end }}
+  {{ end }}
+  <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+    <a
+    aria-current="{{ if eq page.RelPermalink $currentEventsLink }}true{{ else }}false{{ end }}"
+    href="{{ $currentEventsLink }}" itemprop="url">
+      <span itemprop="name">News</span>
+    </a>
+  </li>
+  {{ with site.Menus.main }}
     {{ range . }}
       <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
         <a aria-current="{{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}" href="{{ .URL }}" itemprop="url">
@@ -26,5 +34,5 @@
         </a>
       </li>
     {{ end }}
-  </menu>
-{{ end }}
+  {{ end }}
+</menu>

@@ -1,12 +1,9 @@
 {{ $gallery := partial "get-gallery.html" . }}
 {{ with $gallery }}
   {{- $thumbnailURL := partial "resolve-image-url" (dict "url" .thumbnail.src "site" site) }}
-  <a class="card" href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
-    <figure style="background-color: {{ .color }}">
-      <img class="lazyload" width="{{ .thumbnail.width | default 1920 }}" height="{{ .thumbnail.height | default 1080 }}" data-src="{{ $thumbnailURL }}" alt="{{ .page.Title }}" />
-    </figure>
-    <div>
-      <h2>{{ .page.Title }}</h2>
+  <div class="card">
+    <div class="card-text">
+      <h2><a href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">{{ .page.Title }}</a></h2>
       <p>
         {{ if gt .albumCount 0 }}
           {{ T "albumCount" (dict "count" (.albumCount | lang.FormatNumber 0) "photoCount" (.imageCount | lang.FormatNumber 0 | lang.Translate "photoCount")) }}
@@ -14,6 +11,22 @@
           {{ T "photoCount" (.imageCount | lang.FormatNumber 0) }}
         {{ end }}
       </p>
+      {{ if .page.Content }}
+        <div class="card-content">
+          {{ .page.Content }}
+        </div>
+      {{ end }}
     </div>
-  </a>
+    <a href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">
+      <figure style="background-color: {{ .color }}">
+        <img class="lazyload" width="{{ .thumbnail.width | default 960 }}" height="{{ .thumbnail.height | default 540 }}" data-src="{{ $thumbnailURL }}" alt="{{ .page.Title }}" />
+      </figure>
+    </a>
+    <div class="card-footer">
+      <a href="{{ .page.RelPermalink }}" title="{{ .page.Title }}">Read more...</a>
+      {{ with .page.Params.date_published }}
+        <p class="card-published-date">Published on {{ . | time.Format "January 2, 2006" }}</p>
+      {{ end }}
+    </div>
+  </div>
 {{ end }}

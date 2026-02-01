@@ -12,6 +12,132 @@ hgroup {
   margin: 0 auto 0;
 }
 
+section.galleries {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+section.galleries .card {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+section.galleries .card h2 {
+  margin: 0 0 0.5rem 0;
+}
+
+section.galleries .card h2 a {
+  text-decoration: none;
+  color: inherit;
+}
+
+section.galleries .card h2 a:hover {
+  text-decoration: underline;
+}
+
+section.galleries .card figure {
+  margin: 0;
+  overflow: hidden;
+  background-color: transparent !important;
+}
+
+section.galleries .card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+section.galleries .card-content {
+  display: contents;
+}
+
+section.galleries .card-content p {
+  margin: 0.5rem 0;
+}
+
+section.galleries .card-content a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+section.galleries .card-content a:hover {
+  text-decoration: none;
+}
+
+section.galleries .card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+section.galleries .card-footer a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+section.galleries .card-footer a:hover {
+  text-decoration: none;
+}
+
+section.galleries .card-published-date {
+  font-size: 0.875rem;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+  text-align: right;
+}
+
+/* Apply card styles to single pages */
+.home-main > h2 {
+  margin: 0 0 0.5rem 0;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: 600;
+  font-size: 1.125rem;
+  line-height: 1.375;
+}
+
+.home-main > h2 span {
+  text-decoration: none;
+  color: inherit;
+}
+
+.home-main > .card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  gap: 1rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.home-main > .card-footer a {
+  text-decoration: underline;
+  color: inherit;
+}
+
+.home-main > .card-footer a:hover {
+  text-decoration: none;
+}
+
+.home-main .card-published-date {
+  font-size: 0.875rem;
+  color: #666;
+  font-style: italic;
+  margin: 0;
+  text-align: right;
+}
+
 #menu.horizontal-menu {
   display: flex;
   flex-wrap: wrap;
@@ -46,6 +172,26 @@ hgroup {
 .home-main {
   flex: 1;
   min-width: 0;
+}
+
+.home-main section.prose {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-main hgroup {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-main section.featured {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.home-main section.gallery {
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .home-sidebar {
