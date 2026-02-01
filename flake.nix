@@ -52,6 +52,7 @@
             vscode
             just
             jdk17 # for SQ:IDE
+            imagemagick # for image resizing
 
             nodePackages.nodejs
             nodePackages.npm
