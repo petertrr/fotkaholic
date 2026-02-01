@@ -1,7 +1,7 @@
 baseURL = 'https://fotkaholic.eu/'
 languageCode = 'en-us'
 title = 'Fotkaholic'
-copyright = "© 2026 Anna Gordenko and Petr Trifanov. All photographs are All Rights Reserved."
+copyright = "© 2026 Anna Gordenko and Petr Trifanov. All rights reserved."
 
 [params]
 cdn_url = 'https://img.fotkaholic.eu/'
