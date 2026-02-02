@@ -2,9 +2,6 @@
   {{ with .Site }}
     <hgroup>
       <h1 class="licorice-regular">{{ .Title }}</h1>
-      {{ with .Params.Description }}
-        <p>{{ . | markdownify }}</p>
-      {{ end }}
     </hgroup>
   {{ end }}
 </header>

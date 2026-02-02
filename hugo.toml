@@ -6,6 +6,7 @@ copyright = "© 2026 Anna Gordenko and Petr Trifanov. All rights reserved."
 [params]
 cdn_url = 'https://img.fotkaholic.eu/'
 use_cdn = true
+description = 'Personal website of Anna Gordenko and Peter Trifanov - photographers in NRW, Germany'
 [params.socialIcons]
 telegram = "https://t.me/fotkaholic"
 instagram = "https://www.instagram.com/aru_kotsuno"

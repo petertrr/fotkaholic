@@ -5,7 +5,6 @@ weight: 3
 params:
   featured: false
   featured_image: street/bridge-1920x1080.jpg
-  theme: dark
   sort_order: desc
   sort_by: Name
   date_published: 2026-02-01
