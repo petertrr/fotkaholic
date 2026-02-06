@@ -1,3 +1,5 @@
+<link rel="sitemap" type="application/xml" title="Sitemap" href="/sitemap.xml">
+
 <meta property="og:url" content="{{ .Permalink }}" />
 
 {{- with or site.Title site.Params.title | plainify }}
@@ -37,5 +39,16 @@
   {{- with $gallery.thumbnail -}}
     {{- $imageURL := partial "resolve-image-url" (dict "url" .src "site" site) }}
     <meta property="og:image" content="{{ $imageURL }}" />
+  {{- end -}}
+{{- else }}
+  {{/* If the current page is not itself a gallery, try to use thumbnail of the first post as an image */}}
+  {{- with (index .Pages 0) }}
+    {{- $firstPageGallery := partial "get-gallery.html" . -}}
+    {{- if $firstPageGallery -}}
+      {{- with $firstPageGallery.thumbnail -}}
+        {{- $imageURL := partial "resolve-image-url" (dict "url" .src "site" site) }}
+        <meta property="og:image" content="{{ $imageURL }}" />
+      {{- end -}}
+    {{- end -}}
   {{- end -}}
 {{- end -}}
