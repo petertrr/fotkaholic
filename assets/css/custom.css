@@ -254,6 +254,8 @@ section.galleries .card-published-date {
     flex: 1;
     position: static;
     width: 100%;
+    visibility: hidden;
+    display: none;
   }
 }
 
