@@ -93,6 +93,15 @@ section.galleries .card-published-date {
   text-align: right;
 }
 
+/* Apply padding to all pages, not only feed with cards */
+div.home-main {
+  padding: 1rem;
+}
+/* This style is coming from the base CSS, so it is overridden here */
+div.card-text {
+  padding-left: 0;
+}
+
 /* Apply card styles to single pages */
 .home-main > h2 {
   margin: 0 0 0.5rem 0;
