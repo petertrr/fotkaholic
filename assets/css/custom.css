@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Licorice&display=swap');
 
+/* Design Tokens: CSS Custom Properties */
+:root {
+  /* Colors */
+  --color-text-muted: #666;
+  --color-white: white;
+  --color-transparent: transparent;
+
+  /* Spacing */
+  --spacing-xs: 0.5rem;
+  --spacing-sm: 1rem;
+  --spacing-md: 1.5rem;
+  --spacing-lg: 2rem;
+
+  /* Layout */
+  --content-max-width: 600px;
+  --sidebar-width: 280px;
+
+  /* Typography */
+  --font-size-sm: 0.875rem;
+  --font-size-normal: 0.95rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --line-height-heading: 1.375;
+
+  /* Components */
+  --photographer-image-size: 120px;
+  --photographer-image-offset: 85px;
+  --photographer-border-width: 3px;
+  --border-radius-sm: 0.5rem;
+  --border-radius-circle: 50%;
+
+  /* Shadows */
+  --shadow-light: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-medium: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
 body {
   align-items: center; /* to align items in the top menu */
 }
@@ -15,18 +51,18 @@ hgroup {
 section.galleries {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: var(--spacing-lg);
 }
 
 section.galleries .card {
-  max-width: 600px;
+  max-width: var(--content-max-width);
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 }
 
 section.galleries .card h2 {
-  margin: 0 0 0.5rem 0;
+  margin: 0 0 var(--spacing-xs) 0;
 }
 
 section.galleries .card h2 a {
@@ -41,7 +77,7 @@ section.galleries .card h2 a:hover {
 section.galleries .card figure {
   margin: 0;
   overflow: hidden;
-  background-color: transparent !important;
+  background-color: var(--color-transparent) !important;
 }
 
 section.galleries .card img {
@@ -55,7 +91,7 @@ section.galleries .card-content {
 }
 
 section.galleries .card-content p {
-  margin: 0.5rem 0;
+  margin: var(--spacing-xs) 0;
 }
 
 section.galleries .card-content a {
@@ -67,27 +103,33 @@ section.galleries .card-content a:hover {
   text-decoration: none;
 }
 
-section.galleries .card-footer {
+/* Shared card footer styles */
+section.galleries .card-footer,
+.home-main > .card-footer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: var(--spacing-sm);
+  gap: var(--spacing-sm);
 }
 
-section.galleries .card-footer a {
+section.galleries .card-footer a,
+.home-main > .card-footer a {
   text-decoration: underline;
   color: inherit;
 }
 
-section.galleries .card-footer a:hover {
+section.galleries .card-footer a:hover,
+.home-main > .card-footer a:hover {
   text-decoration: none;
 }
 
-section.galleries .card-published-date {
-  font-size: 0.875rem;
-  color: #666;
+/* Shared published date styles */
+section.galleries .card-published-date,
+.home-main .card-published-date {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
   font-style: italic;
   margin: 0;
   text-align: right;
@@ -95,7 +137,7 @@ section.galleries .card-published-date {
 
 /* Apply padding to all pages, not only feed with cards */
 div.home-main {
-  padding: 1rem;
+  padding: var(--spacing-sm);
 }
 /* This style is coming from the base CSS, so it is overridden here */
 div.card-text {
@@ -104,13 +146,13 @@ div.card-text {
 
 /* Apply card styles to single pages */
 .home-main > h2 {
-  margin: 0 0 0.5rem 0;
-  max-width: 600px;
+  margin: 0 0 var(--spacing-xs) 0;
+  max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
   font-weight: 600;
-  font-size: 1.125rem;
-  line-height: 1.375;
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-heading);
 }
 
 .home-main > h2 span {
@@ -118,42 +160,20 @@ div.card-text {
   color: inherit;
 }
 
+/* Additional spacing for card footer in single page context */
 .home-main > .card-footer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
-  max-width: 600px;
+  max-width: var(--content-max-width);
   margin-left: auto;
   margin-right: auto;
-}
-
-.home-main > .card-footer a {
-  text-decoration: underline;
-  color: inherit;
-}
-
-.home-main > .card-footer a:hover {
-  text-decoration: none;
-}
-
-.home-main .card-published-date {
-  font-size: 0.875rem;
-  color: #666;
-  font-style: italic;
-  margin: 0;
-  text-align: right;
 }
 
 #menu.horizontal-menu {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: var(--spacing-sm);
   list-style: none;
   padding: 0;
-  margin: 1rem 0;
+  margin: var(--spacing-sm) 0;
   align-items: center;
 }
 
@@ -165,7 +185,7 @@ div.card-text {
 #menu.horizontal-menu li a {
   text-decoration: none;
   display: inline-block;
-  padding: 0.5rem 1rem;
+  padding: var(--spacing-xs) var(--spacing-sm);
 }
 
 #menu.horizontal-menu li a:hover {
@@ -174,7 +194,7 @@ div.card-text {
 
 .home-container {
   display: flex;
-  gap: 2rem;
+  gap: var(--spacing-lg);
   align-items: flex-start;
 }
 
@@ -183,64 +203,53 @@ div.card-text {
   min-width: 0;
 }
 
-.home-main section.prose {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.home-main hgroup {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.home-main section.featured {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
+/* Centered content wrapper for consistent max-width */
+.home-main section.prose,
+.home-main hgroup,
+.home-main section.featured,
 .home-main section.gallery {
-  max-width: 600px;
+  max-width: var(--content-max-width);
   margin: 0 auto;
 }
 
 .home-sidebar {
-  flex: 0 0 280px;
+  flex: 0 0 var(--sidebar-width);
   position: sticky;
-  top: 2rem;
+  top: var(--spacing-lg);
 }
 
 .photographer-info {
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  padding: var(--spacing-md);
+  border-radius: var(--border-radius-sm);
+  box-shadow: var(--shadow-light);
 }
 
 .photographer-info h2 {
   margin-top: 0;
-  margin-bottom: 1rem;
-  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+  font-size: var(--font-size-xl);
 }
 
 .photographer-info p {
-  margin: 0.5rem 0;
-  font-size: 0.95rem;
+  margin: var(--spacing-xs) 0;
+  font-size: var(--font-size-normal);
   line-height: 1.5;
 }
 
 .photographer-images {
   position: relative;
-  height: 120px;
-  margin-bottom: 1.5rem;
+  height: var(--photographer-image-size);
+  margin-bottom: var(--spacing-md);
 }
 
 .photographer-images img {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+  width: var(--photographer-image-size);
+  height: var(--photographer-image-size);
+  border-radius: var(--border-radius-circle);
   object-fit: cover;
   position: absolute;
-  border: 3px solid white;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  border: var(--photographer-border-width) solid var(--color-white);
+  box-shadow: var(--shadow-medium);
 }
 
 .photographer-images img:first-child {
@@ -249,11 +258,13 @@ div.card-text {
 }
 
 .photographer-images img:last-child {
-  left: 85px;
+  left: var(--photographer-image-offset);
   z-index: 3;
 }
 
 /* Responsive: stack sidebar below on smaller screens */
+/* Note: CSS custom properties cannot be used in @media conditions because */
+/* media queries are evaluated at parse-time before variable resolution */
 @media (max-width: 768px) {
   .home-container {
     flex-direction: column;
