@@ -16,7 +16,7 @@
       {{ $currentEventsLink = .RelPermalink }}
     {{ end }}
   {{ end }}
-  <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+  <li itemscope itemtype="https://schema.org/SiteNavigationElement">
     <a
     aria-current="{{ if eq page.RelPermalink $currentEventsLink }}true{{ else }}false{{ end }}"
     href="{{ $currentEventsLink }}" itemprop="url">
@@ -25,7 +25,7 @@
   </li>
   {{ with site.Menus.main }}
     {{ range . }}
-      <li itemscope itemtype="http://www.schema.org/SiteNavigationElement">
+      <li itemscope itemtype="https://schema.org/SiteNavigationElement">
         <a aria-current="{{ or (page.IsMenuCurrent .Menu .) (page.HasMenuCurrent .Menu .) }}" href="{{ .URL }}" itemprop="url">
           <span itemprop="name">{{ .Name }}</span>
         </a>
