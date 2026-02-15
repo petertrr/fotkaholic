@@ -1,0 +1,35 @@
+{{/*
+  get-cover-image.html: Extract cover/featured image from gallery
+
+  Expects context to be the page with Params.images and Params.featured_image.
+
+  Returns the featured image object with the following priority:
+  1. Image marked with .params.cover in front matter
+  2. Image matching .Params.featured_image path
+  3. First image in the array (fallback)
+
+  If no images exist, returns empty string.
+*/}}
+{{ $images := .Params.images | default slice }}
+{{ $featured := "" }}
+
+{{/* Find cover image marked in front matter */}}
+{{ range $images }}
+  {{ if .params.cover }}
+    {{ $featured = . }}
+  {{ end }}
+{{ end }}
+
+{{/* Find featured image by src if specified and no cover found */}}
+{{ if and (not $featured) .Params.featured_image }}
+  {{ range $images }}
+    {{ if eq .src $.Params.featured_image }}
+      {{ $featured = . }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{/* Default to first image if available */}}
+{{ $featured = $featured | default (index $images 0) }}
+
+{{ return $featured }}

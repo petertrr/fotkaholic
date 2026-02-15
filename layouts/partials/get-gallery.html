@@ -1,56 +1,41 @@
+{{/*
+  get-gallery.html: Build gallery data structure for album cards
+
+  Orchestrates data extraction for gallery display. Delegating specific
+  concerns to focused partials:
+  - get-cover-image.html: Find featured image
+  - count-images.html: Count images and albums
+
+  Returns a dict with gallery metadata:
+  - page: The page context
+  - images: Array of image objects from front matter
+  - thumbnail: Featured image object (cover or featured_image or first)
+  - color: Hex color for card background
+  - imageCount: Number of visible images
+  - albumCount: Number of sub-albums
+*/}}
 {{ $gallery := "" }}
 {{ $images := .Params.images | default slice }}
+
 {{ if gt (len $images) 0 }}
-  {{/* Find cover image from front matter */}}
-  {{ $cover := "" }}
-  {{ range $images }}
-    {{ if .params.cover }}
-      {{ $cover = . }}
-    {{ end }}
-  {{ end }}
+  {{/* Extract featured image with priority: cover -> featured_image -> first */}}
+  {{ $featured := partial "get-cover-image.html" . }}
 
-  {{/* Find featured image by src if specified */}}
-  {{ $featured := $cover }}
-  {{ if and (not $featured) .Params.featured_image }}
-    {{ range $images }}
-      {{ if eq .src $.Params.featured_image }}
-        {{ $featured = . }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
-  {{/* Default to first image if no featured/cover found */}}
-  {{ $featured = $featured | default (index $images 0) }}
-
-  {{/* Use color from front matter or default */}}
+  {{/* Get color from featured image or default to transparent */}}
   {{ $color := $featured.color | default "transparent" }}
 
-  {{ $imageCount := 0 }}
-  {{ $albumCount := 0 }}
-  {{ if .IsPage }}
-    {{/* Count images from front matter, excluding hidden ones */}}
-    {{ range $images }}
-      {{ if ne .params.hidden true }}
-        {{ $imageCount = add $imageCount 1 }}
-      {{ end }}
-    {{ end }}
-  {{ else }}
-    {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
-      {{ $albumCount = add $albumCount 1 }}
-      {{ $pageImages := .Params.images | default slice }}
-      {{ range $pageImages }}
-        {{ if ne .params.hidden true }}
-          {{ $imageCount = add $imageCount 1 }}
-        {{ end }}
-      {{ end }}
-    {{ end }}
-  {{ end }}
+  {{/* Count visible images and albums */}}
+  {{ $counts := partial "count-images.html" . }}
+
+  {{/* Build final gallery dict */}}
   {{ $gallery = dict
     "page" $
     "images" $images
     "thumbnail" $featured
     "color" $color
-    "albumCount" $albumCount
-    "imageCount" $imageCount
+    "albumCount" $counts.albumCount
+    "imageCount" $counts.imageCount
   }}
 {{ end }}
+
 {{ return $gallery }}

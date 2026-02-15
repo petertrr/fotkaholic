@@ -1,0 +1,36 @@
+{{/*
+  count-images.html: Count visible images and optionally albums
+
+  Expects context to be the page.
+
+  Returns a dict with:
+  - imageCount: Number of visible (non-hidden) images
+  - albumCount: Number of sub-albums (0 for individual pages)
+
+  Logic:
+  - For pages (IsPage=true): Count images from Params.images, excluding hidden
+  - For sections (IsPage=false): Count albums and their images recursively
+*/}}
+{{ $imageCount := 0 }}
+{{ $albumCount := 0 }}
+
+{{ if .IsPage }}
+  {{/* Page context: count images from front matter, excluding hidden ones */}}
+  {{ range .Params.images | default slice }}
+    {{ if ne .params.hidden true }}
+      {{ $imageCount = add $imageCount 1 }}
+    {{ end }}
+  {{ end }}
+{{ else }}
+  {{/* Section context: count albums and their images */}}
+  {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
+    {{ $albumCount = add $albumCount 1 }}
+    {{ range .Params.images | default slice }}
+      {{ if ne .params.hidden true }}
+        {{ $imageCount = add $imageCount 1 }}
+      {{ end }}
+    {{ end }}
+  {{ end }}
+{{ end }}
+
+{{ return dict "imageCount" $imageCount "albumCount" $albumCount }}
