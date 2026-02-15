@@ -4,7 +4,7 @@
   Expects context to be the page with Params.images and Params.featured_image.
 
   Returns the featured image object with the following priority:
-  1. Image marked with .params.cover in front matter
+  1. Image marked with cover field in front matter
   2. Image matching .Params.featured_image path
   3. First image in the array (fallback)
 
@@ -15,7 +15,7 @@
 
 {{/* Find cover image marked in front matter */}}
 {{ range $images }}
-  {{ if .params.cover }}
+  {{ if .cover }}
     {{ $featured = . }}
   {{ end }}
 {{ end }}

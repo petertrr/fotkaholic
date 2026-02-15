@@ -7,7 +7,7 @@
 {{ end }}
 {{ partial "gallery.html" . }}
 {{ partial "related.html" . }}
-{{ with .Params.date_published }}
+{{ with .Date }}
 <div class="card-footer">
   <span></span>
   <p class="card-published-date">Published on {{ . | time.Format "January 2, 2006" }}</p>

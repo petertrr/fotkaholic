@@ -2,20 +2,18 @@
 title: Anna's photo on an exhibition by Moments Collective
 categories: []
 weight: 3
+date: 2026-02-01
 params:
-  featured: false
   featured_image: street/bridge-1920x1080.jpg
   sort_order: desc
   sort_by: Name
-  date_published: 2026-02-01
   images:
     - src: street/bridge-1920x1080.jpg
       title: ""
       width: 1920
       height: 1080
       color: "#7a8a6c"
-      params:
-        cover: true
+      cover: true
 ---
 
 Congratulations to Anna! Her photo won in category "Street Life" in&nbsp;a&nbsp;competition held by Moments Collective.

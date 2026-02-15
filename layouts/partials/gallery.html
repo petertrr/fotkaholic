@@ -4,7 +4,7 @@
     {{/* Loop over images from front matter instead of resources */}}
     {{ range $img := .Params.images | default slice }}
       {{/* Skip hidden images */}}
-      {{ if ne $img.params.hidden true }}
+      {{ if ne $img.hidden true }}
         {{ $title := $img.title | default "" }}
         {{ $date := "" }}
         {{ if $img.date }}

@@ -17,7 +17,7 @@
 {{ if .IsPage }}
   {{/* Page context: count images from front matter, excluding hidden ones */}}
   {{ range .Params.images | default slice }}
-    {{ if ne .params.hidden true }}
+    {{ if ne .hidden true }}
       {{ $imageCount = add $imageCount 1 }}
     {{ end }}
   {{ end }}
@@ -26,7 +26,7 @@
   {{ range where .RegularPagesRecursive "Params.private" "ne" true }}
     {{ $albumCount = add $albumCount 1 }}
     {{ range .Params.images | default slice }}
-      {{ if ne .params.hidden true }}
+      {{ if ne .hidden true }}
         {{ $imageCount = add $imageCount 1 }}
       {{ end }}
     {{ end }}
