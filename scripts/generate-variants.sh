@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Script to generate image variants (resize to 600x600)
+# Script to generate image variants (resize to RESIZE_WIDTH*RESIZE_HEIGHT)
 # Usage: ./scripts/generate-variants.sh image1.jpg image2.jpg ...
 
 # Configuration
@@ -49,10 +49,10 @@ for image_path in "$@"; do
         -gravity center \
         "$resized_path"; then
         echo "  ✓ Generated: $resized_filename"
-        ((processed_count++))
+        processed_count=$((processed_count+1))
     else
         echo "  ✗ Failed to resize: $image_path" >&2
-        ((failed_count++))
+        failed_count=$((failed_count+1))
     fi
 done
 

@@ -53,6 +53,7 @@
             just
             jdk17 # for SQ:IDE
             imagemagick # for image resizing
+            awscli2 # for image upload
 
             nodePackages.nodejs
             nodePackages.npm
