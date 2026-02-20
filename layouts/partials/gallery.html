@@ -19,6 +19,7 @@
           "Title" $title
           "Date" $date
           "src" $img.src
+          "srcHiRes" ($img.srcHiRes | default $img.src)
           "width" ($img.width | default 1920)
           "height" ($img.height | default 1080)
           "color" ($img.color | default "transparent")
@@ -31,7 +32,9 @@
 
     {{ range sort $images (.Params.sort_by | default "Name") (.Params.sort_order | default "asc") }}
       {{- $imageURL := partial "resolve-image-url" (dict "url" .src "site" site) }}
-      <a class="gallery-item" href="{{ $imageURL }}" data-pswp-src="{{ $imageURL }}" data-pswp-width="{{ .width }}" data-pswp-height="{{ .height }}" data-pswp-target="{{ .Name | urlize }}" title="{{ .Title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ .width }} / {{ .height }}">
+      {{- $imageHiResURL := partial "resolve-image-url" (dict "url" .srcHiRes "site" site) }}
+      <a class="gallery-item" href="{{ $imageHiResURL }}" data-pswp-src="{{ $imageURL }}" data-pswp-width="{{ .width }}" data-pswp-height="{{ .height }}" 
+          data-pswp-target="{{ .Name | urlize }}" title="{{ .Title }}" itemscope itemtype="https://schema.org/ImageObject" style="aspect-ratio: {{ .width }} / {{ .height }}">
         <figure style="background-color: {{ .color }}; aspect-ratio: {{ .width }} / {{ .height }}">
           <img class="lazyload" width="{{ .width }}" height="{{ .height }}" data-src="{{ $imageURL }}" alt="{{ .Title }}" />
         </figure>
