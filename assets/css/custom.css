@@ -82,6 +82,7 @@ section.galleries .card figure {
 
 section.galleries .card img {
   width: 100%;
+  aspect-ratio: auto;
   height: auto;
   display: block;
 }
