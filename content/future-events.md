@@ -7,6 +7,7 @@ menu:
     weight: 80
 ---
 
-* (Photos will be available soon) 15.02 Dortmund [Tadaima](https://www.instagram.com/tadaima_con/)
 * 14.03 Kassel [LARP-Con](https://larp-con.de/)
-* 04-05.07.2026 Geislautern [Vegan Fantasy Fair](https://veganfantasyfair.de)
+* 21.03 Hamm [Fantastische Mittelaltermesse](https://mittelaltermarkt.online/event/fantastische-mittelaltermesse-in-hamm-2026/)
+* 04-05.04 Kloster Graefenthal [Ostermarkt](https://kloster-graefenthal.de/ostermarkt-2026/)
+* 04-05.07 Geislautern [Vegan Fantasy Fair](https://veganfantasyfair.de)
