@@ -1,7 +1,7 @@
 ---
 title: Anna's photo on an exhibition by Moments Collective
 categories: []
-weight: 3
+weight: 40
 date: 2026-02-01
 params:
   featured_image: street/bridge-1920x1080.jpg

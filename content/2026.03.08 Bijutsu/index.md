@@ -1,7 +1,7 @@
 ---
 title: Bijutsu Düsseldorf — part 1
 categories: []
-weight: 3
+weight: 20
 date: 2026-03-23
 params:
   featured_image: events/2026-03-bijutsu/IMG_6090-1920x1080.jpg

@@ -1,7 +1,7 @@
 ---
 title: Tadaima Dortmund
 categories: []
-weight: 3
+weight: 30
 date: 2026-02-19
 params:
   featured_image: events/2026-02-tadaima/20260215_142023_40464F66.00001-1920x1080.jpg
