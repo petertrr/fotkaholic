@@ -1,7 +1,9 @@
 {{ define "main" }}
 {{ partial "featured.html" . }}
 <section class="galleries">
-  {{ range where .Pages "Params.private" "ne" true }}
+  {{ $pages := where .Pages "Params.private" "ne" true }}
+
+  {{ range $pages.ByWeight.Reverse.ByDate.Reverse }}
   {{ partial "album-card.html" . }}
   {{ end }}
 </section>
