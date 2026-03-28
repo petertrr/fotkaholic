@@ -219,7 +219,7 @@ div.card-text {
   top: var(--spacing-lg);
 }
 
-.photographer-info {
+.photographer-info, .notification {
   padding: var(--spacing-md);
   border-radius: var(--border-radius-sm);
   box-shadow: var(--shadow-light);
@@ -261,6 +261,10 @@ div.card-text {
 .photographer-images img:last-child {
   left: var(--photographer-image-offset);
   z-index: 3;
+}
+
+.notification a:hover {
+  text-decoration: underline;
 }
 
 /* Responsive: stack sidebar below on smaller screens */

@@ -7,4 +7,4 @@ menu:
     weight: 90
 ---
 
-Reach out to us via Instagram or Telegram, or email to aru.kotsuno@inbox.ru.
+Reach out to us via Instagram or Telegram, or email to fotkaholic (at) gmail.com.
