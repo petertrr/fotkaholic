@@ -36,8 +36,12 @@
             ];
 
             buildPhase = ''
-              mkdir -p themes/github.com/nicokaiser/hugo-theme-gallery
-              ln -s ${hugo-theme-gallery} themes/github.com/nicokaiser/hugo-theme-gallery/v4
+              if [ ! -d themes/github.com/nicokaiser/hugo-theme-gallery]; then
+                mkdir -p themes/github.com/nicokaiser/hugo-theme-gallery
+                ln -s ${hugo-theme-gallery} themes/github.com/nicokaiser/hugo-theme-gallery/v4
+              else
+                echo Hugo theme is already installed
+              fi
               ${pkgs.just}/bin/just build
             '';
 
@@ -50,13 +54,17 @@
             go
             hugo
             vscode
+            claude-code
             just
             jdk17 # for SQ:IDE
             imagemagick # for image resizing
             awscli2 # for image upload
+            exiftool # for EXIF metadata manipulation
 
             nodePackages.nodejs
             nodePackages.npm
+
+            awscli2 # for Cloudflare R2 uploads
           ];
           
           shellHook = ''

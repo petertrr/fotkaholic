@@ -1,5 +1,5 @@
 dev:
-  hugo server --environment development
+  hugo server --buildDrafts --environment production --disableFastRender
 
 build:
   hugo --environment production --minify
