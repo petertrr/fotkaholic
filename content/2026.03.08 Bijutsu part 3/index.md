@@ -16,6 +16,22 @@ params:
     width: 720
     height: 1080
     srcHiRes: events/2026-03-bijutsu/portraits/20260308_143904_53717860.jpg
+  - src: events/2026-03-bijutsu/portraits/20260308_144427_da40dbdb-1920x1080.jpg
+    width: 720
+    height: 1080
+    srcHiRes: events/2026-03-bijutsu/portraits/20260308_144427_da40dbdb.jpg
+  - src: events/2026-03-bijutsu/portraits/20260308_144535_ed050325-1920x1080.jpg
+    width: 720
+    height: 1080
+    srcHiRes: events/2026-03-bijutsu-portraits/20260308_144535_ed050325.jpg
+  - src: events/2026-03-bijutsu/portraits/20260308_144414_da43930f-1920x1080.jpg
+    width: 720
+    height: 1080
+    srcHiRes: events/2026-03-bijutsu-portraits/20260308_144414_da43930f.jpg
+  - src: events/2026-03-bijutsu/portraits/20260308_144528_5438a126-1920x1080.jpg
+    width: 720
+    height: 1080
+    srcHiRes: events/2026-03-bijutsu-portraits/20260308_144528_5438a126.jpg
   - src: events/2026-03-bijutsu/portraits/20260308_144805_b645c560-1920x1080.jpg
     width: 720
     height: 1080
