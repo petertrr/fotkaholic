@@ -1,7 +1,7 @@
 ---
 title: 'LARPCon in Kassel - part 2'
 categories: []
-weight: 3
+weight: 40
 date: 2026-03-28
 params:
   featured_image: events/2026-03-larpcon/portraits/20260314_161511_21d12406-1920x1080.jpg

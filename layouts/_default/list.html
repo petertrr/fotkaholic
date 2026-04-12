@@ -1,7 +1,13 @@
 {{ define "main" }}
 <section class="galleries">
-  {{ range where .Pages "Params.private" "ne" true }}
+  {{ $pages := where .Pages "Params.private" "ne" true }}
+  
+  {{ range .Pages.GroupBy "Date" "desc"}}
+  {{ range .ByWeight }}
+  {{ if .Params.private "ne" true }}
   {{ partial "album-card.html" . }}
+  {{ end }}
+  {{ end }}
   {{ end }}
 </section>
 {{ end }}
