@@ -7,5 +7,5 @@ menu:
     weight: 80
 ---
 
-* 04-05.04 Kloster Graefenthal [Ostermarkt](https://kloster-graefenthal.de/ostermarkt-2026/)
+* 23.05 Düsseldorf [Japan-Tag](https://www.visitduesseldorf.de/erleben/veranstaltungen/japan-tag-duesseldorf-nrw)
 * 04-05.07 Geislautern [Vegan Fantasy Fair](https://veganfantasyfair.de)
