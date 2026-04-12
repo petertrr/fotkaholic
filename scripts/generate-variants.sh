@@ -5,8 +5,8 @@ set -euo pipefail
 # Usage: ./scripts/generate-variants.sh image1.jpg image2.jpg ...
 
 # Configuration
-RESIZE_WIDTH=1920
-RESIZE_HEIGHT=1080
+export RESIZE_WIDTH=1920
+export RESIZE_HEIGHT=1080
 
 if ! command -v magick &> /dev/null; then
     echo "Error: ImageMagick (magick) is not installed" >&2
@@ -25,10 +25,11 @@ if [ $# -eq 0 ]; then
 fi
 
 echo "Generating image variants..."
-processed_count=0
-failed_count=0
+export processed_count=0
+export failed_count=0
 
-for image_path in "$@"; do
+process_image() {
+    image_path=$1
     if [ ! -f "$image_path" ]; then
         echo "Warning: File not found: $image_path" >&2
         ((failed_count++))
@@ -107,7 +108,10 @@ for image_path in "$@"; do
         echo "  ✗ Failed to resize: $unique_path" >&2
         failed_count=$((failed_count+1))
     fi
-done
+}
+export -f process_image
+
+parallel process_image {} ::: "$@"
 
 echo ""
 echo "=== Summary ==="

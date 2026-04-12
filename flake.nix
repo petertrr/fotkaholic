@@ -60,6 +60,7 @@
             imagemagick # for image resizing
             awscli2 # for image upload
             exiftool # for EXIF metadata manipulation
+            parallel
 
             nodePackages.nodejs
             nodePackages.npm
