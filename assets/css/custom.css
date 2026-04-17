@@ -136,6 +136,23 @@ section.galleries .card-published-date,
   text-align: right;
 }
 
+h1, h2 {
+  margin-top: 1.6em;
+  margin-bottom: 0.6em;
+  color: var(--text-1);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 1.75em;
+  line-height: 1.6;
+}
+
+h2 {
+  font-size: 1.5em;
+  line-height: 1.6;
+}
+
 /* Apply padding to all pages, not only feed with cards */
 div.home-main {
   padding: var(--spacing-sm);
