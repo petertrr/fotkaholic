@@ -4,7 +4,7 @@
   
   {{ range .Pages.GroupBy "Date" "desc"}}
   {{ range .ByWeight }}
-  {{ if .Params.private "ne" true }}
+  {{ if ne .Params.private true }}
   {{ partial "album-card.html" . }}
   {{ end }}
   {{ end }}
