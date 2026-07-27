@@ -62,8 +62,7 @@
             exiftool # for EXIF metadata manipulation
             parallel
 
-            nodePackages.nodejs
-            nodePackages.npm
+            nodejs_24
 
             awscli2 # for Cloudflare R2 uploads
           ];
