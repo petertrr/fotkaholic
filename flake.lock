@@ -21,11 +21,11 @@
     "hugo-theme-gallery": {
       "flake": false,
       "locked": {
-        "lastModified": 1779376027,
-        "narHash": "sha256-tUIbtFGNEG6J6pkXEeYrInZIA3t2vZGXUcQxyy5WWAk=",
+        "lastModified": 1779976575,
+        "narHash": "sha256-rKKLOgYLNKLl+ncGEEv2jEW9fBRfl30Or8awUDGyVCI=",
         "owner": "nicokaiser",
         "repo": "hugo-theme-gallery",
-        "rev": "e8260fab1681274dec31036584c8137d55c94fce",
+        "rev": "748df10e7c9a42db91b55c1da1f4b9e903295ae0",
         "type": "github"
       },
       "original": {
@@ -36,12 +36,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1779560665,
-        "narHash": "sha256-tpyBcxPpcQb8ukyNF7DoCwfSY3VPsxHoYwj00Cayv5o=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "64c08a7ca051951c8eae34e3e3cb1e202fe36786",
-        "type": "github"
+        "lastModified": 1785090369,
+        "narHash": "sha256-JmPsbx37jA7Qga36iij0jsbwV4PVRACnqoVroAt/cAc=",
+        "rev": "624af665418d3c65d544145b4d34ad696439570e",
+        "type": "tarball",
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-26.11pre1042126.624af665418d/nixexprs.tar.xz"
       },
       "original": {
         "id": "nixpkgs",
